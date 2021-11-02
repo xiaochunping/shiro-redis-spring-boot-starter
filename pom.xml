@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.xiaochunping</groupId>
+    <artifactId>shiro-redis-spring-boot-starter</artifactId>
+    <version>3.3.2</version>
+
+    <name>shiro-redis-spring-boot-starter</name>
+    <description>spring-boot starter for shiro-redis</description>
+    <url>https://github.com/xiaochunping/shiro-redis-spring-boot-starter</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>2.3.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.xiaochunping</groupId>
+            <artifactId>shiro-redis</artifactId>
+            <version>${version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring-boot-web-starter</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+    </dependencies>
+    <scm>
+        <connection>scm:git:https://github.com/xiaochunping/shiro-redis-spring-boot-starter.git</connection>
+        <developerConnection>scm:git:https://github.com/xiaochunping/shiro-redis-spring-boot-starter.git</developerConnection>
+        <url>https://github.com/xiaochunping/shiro-redis-spring-boot-starter.git</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>xiaochunping</id>
+            <name>xiaochunping</name>
+            <email>xcp.email@gmail.com</email>
+            <timezone>GMT-8</timezone>
+            <organizationUrl>https://github.com/xiaochunping</organizationUrl>
+            <roles>
+            </roles>
+        </developer>
+    </developers>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>1.5.10.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus</id>
+            <url>http://pms.trasen.cn:8008/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus</id>
+            <url>http://pms.trasen.cn:8008/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <finalName>shiro-redis-spring-boot-starter</finalName>
+        <plugins>
+            <plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+					<compilerArgument>-nowarn</compilerArgument>
+				</configuration>
+			</plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>release</name>
+                    <value>true</value>
+                </property>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.2.0</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
